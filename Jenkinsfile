@@ -20,7 +20,6 @@ pipeline {
                     }
                 }
             }
-        }
 
         stage('Cloning the Repository') {
             steps {
