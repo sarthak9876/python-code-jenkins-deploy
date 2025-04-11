@@ -47,6 +47,8 @@ pipeline {
                     // Login to the Docker repository
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh '''
+                        echo $DOCKER_PASSWORD
+                        echo $DOCKER_USERNAME
                         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin ${DOCKER_REPO}
                         docker push ${DOCKER_IMAGE}
                         '''
