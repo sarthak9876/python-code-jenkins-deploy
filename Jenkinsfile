@@ -14,7 +14,7 @@ pipeline {
             steps{
                 script{
                     if(fileExists('python-code-jenkins-deploy')){
-                        sh 'rm -rf python-code-jenkins-deploy;
+                        sh 'rm -rf python-code-jenkins-deploy'
                     }
                 }
             }
