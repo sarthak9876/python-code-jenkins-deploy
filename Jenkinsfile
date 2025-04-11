@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Clone the repository
-                    git '${REPO_URL}'
+                    git ${REPO_URL}
                 }
             }
         }
