@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Clone the repository
-                    sh 'git clone ${REPO_URL} python-app'
+                    sh 'git clone ${REPO_URL}'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
                 script {
                     // Navigate to the app directory and build the Docker image
                     sh '''
-                    cd python-app
+                    cd python-code-jenkins-deploy
                     docker build -t ${DOCKER_IMAGE} .
                     '''
                 }
