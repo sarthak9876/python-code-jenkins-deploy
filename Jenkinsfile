@@ -75,7 +75,7 @@ pipeline {
                     // Write and execute the test script
                     writeFile file: 'test_api.sh', text: '''
                     #!/bin/bash
-                    response=$(curl -s -X POST -H "Content-Type: application/json" -d '{"num1": 1, "num2": 2}' http://localhost:5000/add)
+                    response=$(curl -s -X GET -H "Content-Type: application/json" -d '{"num1": 1, "num2": 2}' http://localhost:5000/add)
                     if [[ "$response" == '{"result":3}' ]]; then
                         echo "Test Passed"
                         exit 0
