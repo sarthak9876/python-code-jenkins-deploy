@@ -2,10 +2,10 @@ pipeline {
     agent any
 
     environment {
-        REPO_URL = 'https://github.com/your-username/your-python-app-repo.git'
-        DOCKER_IMAGE = 'your-docker-image-name'
-        DOCKER_REPO = 'your-private-docker-repo'
-        DOCKER_CREDENTIALS_ID = 'docker-credentials' // The ID of the Docker credentials in Jenkins
+        REPO_URL = 'https://github.com/sarthak9876/python-code-jenkins-deploy.git'
+        DOCKER_IMAGE = 'python-code-image'
+        DOCKER_REPO = 'mysteryman0007/python-code-jenkins'
+        DOCKER_CREDENTIALS_ID = 'DOCKER_LOGIN_CREDS' // The ID of the Docker credentials in Jenkins
     }
 
     stages {
