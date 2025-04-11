@@ -3,8 +3,9 @@ pipeline {
 
     environment {
         REPO_URL = 'https://github.com/sarthak9876/python-code-jenkins-deploy.git'
-        DOCKER_IMAGE = 'python-code-image'
-        DOCKER_REPO = 'mysteryman0007/python-code-jenkins'
+        DOCKER_IMAGE = 'mysteryman0007/python-code-jenkins'
+        DOCKER_TAG='latest'
+        //DOCKER_REPO = 'mysteryman0007/python-code-jenkins'
         DOCKER_CREDENTIALS_ID = 'DOCKER_LOGIN_CREDS' // The ID of the Docker credentials in Jenkins
     }
 
@@ -37,8 +38,8 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh '''
                         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin ${DOCKER_REPO}
-                        docker tag ${DOCKER_IMAGE} ${DOCKER_REPO}/${DOCKER_IMAGE}
-                        docker push ${DOCKER_REPO}/${DOCKER_IMAGE}
+                        docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:${DOCKER_TAG}
+                        docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
                         '''
                     }
                 }
@@ -86,7 +87,7 @@ pipeline {
                     docker stop flask_app
                     docker rm flask_app
                     docker rmi ${DOCKER_IMAGE}
-                    docker rmi ${DOCKER_REPO}/${DOCKER_IMAGE}
+                    docker rmi ${DOCKER_IMAGE}:${DOCKER_TAG}
                     '''
                     cleanWs()
                 }
