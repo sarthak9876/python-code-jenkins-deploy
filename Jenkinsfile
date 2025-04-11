@@ -10,16 +10,15 @@ pipeline {
     }
 
     stages {
-        
-        stage('Prepare Workspace') {
-            steps {
-                script {
-                    // Check if the directory exists and delete it if it does
-                    if (fileExists('python-code-jenkins-deploy')) {
-                        sh 'rm -rf python-code-jenkins-deploy'
-                    }
-                }
-            }
+        stage('Preparing the WS'){
+            steps{
+                script{
+                    if(fileExists('python-code-jenkins-deploy')){
+                        sh 'rm -rf python-code-jenkins-deploy;
+                    }
+                }
+            }
+        }
 
         stage('Cloning the Repository') {
             steps {
