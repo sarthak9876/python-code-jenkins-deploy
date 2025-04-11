@@ -1,4 +1,4 @@
-import python:3.11-slim
+IMPORT python:3.11-slim
 WORKDIR /app
 COPY requiremets.txt .
 RUN pip insall
