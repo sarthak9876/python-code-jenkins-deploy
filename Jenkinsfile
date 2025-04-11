@@ -5,7 +5,7 @@ pipeline {
         REPO_URL = 'https://github.com/sarthak9876/python-code-jenkins-deploy.git'
         DOCKER_IMAGE = 'mysteryman0007/python-code-jenkins:latest'
         //DOCKER_TAG='latest'
-        //DOCKER_REPO = 'mysteryman0007/python-code-jenkins'
+        DOCKER_REPO = 'hub.docker.com/repository/docker/mysteryman0007'
         DOCKER_CREDENTIALS_ID = 'DOCKER_LOGIN_CREDS' // The ID of the Docker credentials in Jenkins
     }
 
@@ -96,7 +96,6 @@ pipeline {
                     docker stop flask_app
                     docker rm flask_app
                     docker rmi ${DOCKER_IMAGE}
-                    docker rmi ${DOCKER_IMAGE}:${DOCKER_TAG}
                     '''
                     cleanWs()
                 }
